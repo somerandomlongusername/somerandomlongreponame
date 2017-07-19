@@ -1,0 +1,78 @@
+{
+    "channels": [
+        322489056846151681
+    ],
+    "etrigs": {
+        "lmao": {
+            "value": [
+                "\ud83c\uddf1",
+                "\ud83c\uddf2",
+                "\ud83c\udde6",
+                "\ud83c\uddf4"
+            ],
+            "strict": false,
+            "before": 1
+        },
+        "195612311174643713": {
+            "value": [
+                "\ud83d\ude33"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "282980961862418444": {
+            "value": [
+                "<:SharkHi:309391800488034305>"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "230378021507301376": {
+            "value": [
+                "\ud83d\udc04"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "ayy": {
+            "value": [
+                "\ud83c\uddf1",
+                "\ud83c\uddf2",
+                "\ud83c\udde6",
+                "\ud83c\uddf4"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "lurk": {
+            "value": [
+                "\ud83c\uddf1",
+                "\ud83c\uddfa",
+                "\ud83c\uddf7",
+                "\ud83c\uddf0"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "no u": {
+            "value": [
+                "\ud83c\uddf3",
+                "\ud83c\uddf4",
+                "\u25aa",
+                "\ud83c\uddfa"
+            ],
+            "strict": false,
+            "before": 0
+        },
+        "wat": {
+            "value": [
+                "\ud83c\uddfc",
+                "\ud83c\udde6",
+                "\ud83c\uddf9",
+                "<:WaitWhat:309391801163186178>"
+            ],
+            "strict": false,
+            "before": 0
+        }
+    }
+}
