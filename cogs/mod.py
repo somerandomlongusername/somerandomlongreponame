@@ -7,11 +7,11 @@ class Mod:
     def __init__(self, bot):
         self.bot = bot
 
-    async def on_command_error(self, ctx, error):
-        if ctx.cog != self.bot.get_cog('Mod'):
-            return
-        if isinstance(error, commands.errors.BadArgument):
-            await ctx.send('\N{HEAVY EXCLAMATION MARK SYMBOL} Invalid member passed!')
+    # async def on_command_error(self, ctx, error):
+    #     if ctx.cog != self.bot.get_cog('Mod'):
+    #         return
+    #     if isinstance(error, commands.errors.BadArgument):
+    #         await ctx.send('\N{HEAVY EXCLAMATION MARK SYMBOL} Invalid member passed!')
 
     async def answer_done(self, ctx):
         try:

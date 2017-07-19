@@ -2,8 +2,6 @@ from discord.ext import commands
 import logging
 import json
 import time
-import sys
-import traceback
 
 logging.basicConfig(level=logging.WARNING)
 
@@ -16,12 +14,6 @@ startup_extensions = config['EXTENSIONS']
 description = '''A simple bot'''
 bot = commands.Bot(command_prefix=prefix, description=description, owner_id=config['OWNER'])
 bot.my_data_files = 'data/'
-
-
-@bot.event
-async def on_command_error(context, exception):
-    print('Ignoring exception in command {}'.format(context.command), file=sys.stderr)
-    traceback.print_exception(type(exception), exception, exception.__traceback__, file=sys.stderr)
 
 
 @bot.event
