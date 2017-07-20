@@ -133,7 +133,7 @@ class Clever:
             self.config[str(message.guild.id)] = []
         if message.channel.id not in self.clevers:
             self.clevers[message.channel.id] = Cleverbot()
-        if message.channel.id in self.config[message.guild.id]:
+        if message.channel.id in self.config[str(message.guild.id)]:
             if not message.content.startswith('#'):
                 return
             async with message.channel.typing():
