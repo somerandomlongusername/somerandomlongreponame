@@ -3,7 +3,7 @@ import logging
 import json
 import time
 
-with open('configsimple.json', 'r') as f:
+with open('configclever.json', 'r') as f:
     config = json.load(f)
 
 level = logging.INFO if config['INFOLOG'] else logging.WARNING

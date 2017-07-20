@@ -30,6 +30,17 @@ class HComms:
         self.rehcreds = reg.compile(self.heistrecreds, reg.M)
         self.rehcrew = reg.compile(self.heistrecrew, reg.M)
 
+    def calculator(self, total_players: int, total_winners: int, winnings_per: int):
+        total_losers = total_players - total_winners
+        total_winnings = int(total_winners) * int(winnings_per)
+
+        avg_winning = total_winnings / ((self.winners_worth * total_winners) + (self.losers_worth * total_losers))
+        winners_win = self.winners_worth * avg_winning
+        losers_win = self.losers_worth * int(avg_winning)
+        winners_pay = winnings_per - int(winners_win)
+        print('{} {}'.format(winners_pay, losers_win))
+        return winners_pay, losers_win
+
     async def on_message(self, message):
         if not message.guild:
             return
@@ -145,17 +156,6 @@ class HComms:
     #     msg2 += '```'
     #     await self.bot.say(msg)
     #     await self.bot.say(msg2)
-
-    # def calculator(self, total_players: int, total_winners: int, winnings_per: int):
-    #     total_losers = total_players - total_winners
-    #     total_winnings = int(total_winners) * int(winnings_per)
-
-    #     avg_winning = total_winnings / ((self.winners_worth * total_winners) + (self.losers_worth * total_losers))
-    #     winners_win = self.winners_worth * avg_winning
-    #     losers_win = self.losers_worth * int(avg_winning)
-    #     winners_pay = winnings_per - int(winners_win)
-    #     print('{} {}'.format(winners_pay, losers_win))
-    #     return winners_pay, losers_win
 
     # @commands.command(pass_context=True)
     # async def payout(self, ctx):
