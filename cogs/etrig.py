@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import json
+from .utils import checks
 
 
 class ETrig:
@@ -62,7 +63,7 @@ class ETrig:
                 await ctx.send(page)
 
     @etrig.command(name='set')
-    @commands.is_owner()
+    @checks.is_owner()
     async def _set(self, ctx, key, value, strict: bool = True, before: int = 0):
         """Sets the value of an etrig"""
         self.etrigs['etrigs'][key] = {'value': value.split(' '), 'strict': strict, 'before': before}
@@ -70,7 +71,7 @@ class ETrig:
         await ctx.message.add_reaction('\u2705')
 
     @etrig.command(name='toggle')
-    @commands.is_owner()
+    @checks.is_owner()
     async def _toggle(self, ctx, id: int = None):
         """Toggles protection of a channel from etrigs"""
         if id is None:
@@ -83,7 +84,7 @@ class ETrig:
         await ctx.message.add_reaction('\u2705')
 
     @etrig.command(name='listening')
-    @commands.is_owner()
+    @checks.is_owner()
     async def is_listened(self, ctx, id: int = None):
         """Is the given channel listened to?"""
         if id is None:
@@ -94,7 +95,7 @@ class ETrig:
             await ctx.send(f'Channel {self.bot.get_channel(id).mention} *is **not*** being listened to for etriggers')
 
     @etrig.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def delete(self, ctx, *, key: str):
         """Deletes an etrig"""
         del self.etrigs['etrigs'][key.strip(' `')]
@@ -102,7 +103,7 @@ class ETrig:
         await ctx.message.add_reaction('\u2705')
 
     @etrig.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def clear(self, ctx, *, confirmation=None):
         """Deletes every single etrig. Cannot be undone"""
         if confirmation == 'yes seriously I wish to clear it':

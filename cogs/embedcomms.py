@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import random
 import json
+from .utils import checks
 
 
 class EmbedComms():
@@ -46,7 +47,7 @@ class EmbedComms():
         await ctx.send(embed=em)
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def setcolour(self, ctx, *, colour: str):
         """Sets embed colour for emsay"""
         this_colour = self.config['colours'].get(colour)
@@ -60,7 +61,7 @@ class EmbedComms():
         self.write_config()
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def col(self, ctx, name: str, colour: str):
         """Sets a name for a colour"""
         c = 0
@@ -81,7 +82,7 @@ class EmbedComms():
         await ctx.send(embed=em)
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def emsay(self, ctx, title: str, *, content: str = ''):
         """Says something as an embed."""
         em = discord.Embed(title=title, type='rich', description=content, colour=discord.Colour(self.config['colour']))

@@ -3,10 +3,12 @@ import logging
 import json
 import time
 
-logging.basicConfig(level=logging.INFO)
 
 with open('configselfbot.json', 'r') as f:
     config = json.load(f)
+
+level = logging.INFO if config['INFOLOG'] else logging.WARNING
+logging.basicConfig(level=level)
 
 prefix = config['PREFIX']
 token = config['TOKEN']

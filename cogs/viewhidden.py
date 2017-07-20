@@ -10,7 +10,10 @@ class ViewHidden():
         self.role_member_dump = []
 
     async def __local_check(self, ctx):
-        return await ctx.bot.is_owner(ctx.author)
+        if ctx.bot.user.bot:
+            return await ctx.bot.is_owner(ctx.author)
+        else:
+            return True
 
     @commands.command()
     async def channels(self, ctx, id: int):

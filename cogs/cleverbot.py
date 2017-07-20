@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from .utils import checks
 import json
+from .utils import checks
 
 from collections import deque
 from hashlib import md5

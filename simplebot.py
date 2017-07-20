@@ -3,17 +3,18 @@ import logging
 import json
 import time
 
-logging.basicConfig(level=logging.WARNING)
-
 with open('configsimple.json', 'r') as f:
     config = json.load(f)
+
+level = logging.INFO if config['INFOLOG'] else logging.WARNING
+logging.basicConfig(level=level)
 
 prefix = config['PREFIX']
 token = config['TOKEN']
 startup_extensions = config['EXTENSIONS']
 description = '''A simple bot'''
 bot = commands.Bot(command_prefix=prefix, description=description, owner_id=config['OWNER'])
-bot.my_data_files = 'data/'
+bot.my_data_files = 'data/clever/'
 
 
 @bot.event

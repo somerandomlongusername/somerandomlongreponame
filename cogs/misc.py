@@ -5,7 +5,7 @@ import asyncio
 import time
 import json
 import unicodedata
-from .utils import funcs
+from .utils import checks, funcs
 import pyfiglet
 
 
@@ -32,7 +32,7 @@ class Misc:
             await self.bot.change_presence(game=discord.Game(name=self.config['game']))
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def game(self, ctx, streaming: bool, *, game: str):
         """Sets the bot's Playing status"""
         self.config['game'] = game
@@ -164,14 +164,14 @@ class Misc:
         await ctx.send(random.choice(choices))
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def say(self, ctx, *, message: str):
         """Says what you tell it to say"""
         await ctx.message.delete()
         await ctx.send(message)
 
     @commands.command()
-    @commands.is_owner()
+    @checks.is_owner()
     async def bsay(self, ctx, *, text: str):
         """Says something in regional indicators"""
         letters = {'a': '\N{REGIONAL INDICATOR SYMBOL LETTER A}', 'b': '\N{REGIONAL INDICATOR SYMBOL LETTER B}',
@@ -202,7 +202,7 @@ class Misc:
         await ctx.send(' '.join(message))
 
     @commands.command(hidden=True)
-    @commands.is_owner()
+    @checks.is_owner()
     async def repeat(self, ctx, num: int, *, message: str):
         """Repeats a message multiple times"""
         await ctx.message.delete()
@@ -244,7 +244,7 @@ class Misc:
             await ctx.send(embed=msg)
 
     @commands.command(hidden=True)
-    @commands.is_owner()
+    @checks.is_owner()
     async def ascii(self, ctx, *, message: str):
         """Says a message in ascii"""
         await ctx.message.delete()
@@ -254,7 +254,7 @@ class Misc:
             await ctx.send('Message too long to say!')
 
     @commands.command(hidden=True)
-    @commands.is_owner()
+    @checks.is_owner()
     async def lascii(self, ctx, lang: str, font: str, *, message: str):
         """Says a message in ascii with the desired lang and font"""
         await ctx.message.delete()
