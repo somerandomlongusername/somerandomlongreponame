@@ -168,11 +168,12 @@ class HComms:
     #             await self.bot.say(msg)
     #             await asyncio.sleep(self.pay_sleep)
 
-    # @commands.command(pass_context=True)
-    # async def calculate(self, ctx, total_players: int, total_winners: int, winnings_per: int):
-    #     """Calculates payouts"""
-    #     winners_pay, losers_win = self.calculator(total_players, total_winners, winnings_per)
-    #     await self.bot.say('```Each winner should pay {} to the splitter.\nThe splitter should pay {} to each loser.```'.format(winners_pay, losers_win))
+    @commands.command(pass_context=True)
+    async def calculate(self, ctx, total_players: int, total_winners: int, winnings_per: int):
+        """Calculates payouts"""
+        winners_pay, losers_win = self.calculator(total_players, total_winners, winnings_per)
+        await self.bot.say((f'```Each winner should pay {winners_pay} to the splitter.\n'
+                            f'The splitter should pay {losers_win} to each loser.```'))
 
     # @commands.command(pass_context=True)
     # async def manualpay(self, ctx, amount: int, *members: discord.Member):

@@ -116,6 +116,7 @@ class Clever:
     async def cleverlock(self, ctx, *channels: discord.TextChannel):
         self.config[str(ctx.guild.id)] = [c.id for c in channels]
         self.write_config()
+        await ctx.message.add_reaction('\u2705')
 
     @commands.command()
     async def creset(self, ctx):
