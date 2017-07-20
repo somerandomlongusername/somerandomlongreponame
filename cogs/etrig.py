@@ -59,7 +59,7 @@ class ETrig:
     async def etrig(self, ctx):
         """Etrig command group"""
         # if ctx.invoked_subcommand is None:
-        for page in self.bot.formatter.format_help_for(ctx, ctx.command):
+        for page in await self.bot.formatter.format_help_for(ctx, ctx.command):
             await ctx.send(page)
 
     @etrig.command(name='set')
