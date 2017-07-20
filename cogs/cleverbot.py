@@ -104,7 +104,7 @@ class Clever:
                 self.config = json.load(f)
         except FileNotFoundError:
             print([s for s in self.bot.guilds])
-            self.config = {s.id: None for s in self.bot.guilds}
+            self.config = {str(s.id): None for s in self.bot.guilds}
             self.write_config()
 
     def write_config(self):
@@ -114,7 +114,7 @@ class Clever:
     @commands.command()
     @checks.is_owner()
     async def cleverlock(self, ctx, *channels: discord.TextChannel):
-        self.config[ctx.guild.id] = [c.id for c in channels]
+        self.config[str(ctx.guild.id)] = [c.id for c in channels]
         self.write_config()
 
     @commands.command()
@@ -129,8 +129,8 @@ class Clever:
             return
         if isinstance(message.channel, discord.abc.PrivateChannel):
             return
-        if message.guild.id not in self.config:
-            self.config[message.guild.id] = []
+        if str(message.guild.id) not in self.config:
+            self.config[str(message.guild.id)] = []
         if message.channel.id not in self.clevers:
             self.clevers[message.channel.id] = Cleverbot()
         if message.channel.id in self.config[message.guild.id]:
