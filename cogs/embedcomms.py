@@ -86,7 +86,8 @@ class EmbedComms():
     async def emsay(self, ctx, title: str, *, content: str = ''):
         """Says something as an embed."""
         em = discord.Embed(title=title, type='rich', description=content, colour=discord.Colour(self.config['colour']))
-        em.set_footer(text=ctx.author, icon_url=ctx.author.avatar_url)
+        if ctx.bot.user.bot:
+            em.set_footer(text=ctx.author, icon_url=ctx.author.avatar_url)
         try:
             await ctx.message.edit(content='', embed=em)
         except discord.HTTPException:

@@ -132,7 +132,7 @@ class HComms:
             msg += '```'
             await ctx.send(msg)
 
-    # @commands.command(name='winners', pass_context=True)
+    # @commands.command(name='winners')
     # async def _winners(self, ctx):
     #     """Sends the list of winners"""
     #     await self.bot.delete_message(ctx.message)
@@ -157,34 +157,35 @@ class HComms:
     #     await self.bot.say(msg)
     #     await self.bot.say(msg2)
 
-    # @commands.command(pass_context=True)
-    # async def payout(self, ctx):
-    #     """Pays an amount to all members in the recorded list"""
-    #     await self.bot.delete_message(ctx.message)
-    #     _, num = self.calculator(self.crew, len(self.winners), self.winnings)
-    #     for member in self.crew_list:
-    #         if self.crew_list[member]:
-    #             msg = self.payment_msg.format(member, num)
-    #             await self.bot.say(msg)
-    #             await asyncio.sleep(self.pay_sleep)
+    @commands.command()
+    async def payout(self, ctx):
+        """Pays an amount to all members in the recorded list"""
+        await ctx.message.delete()
+        await ctx.invoke(self._list, False)
+        _, num = self.calculator(self.crew, len(self.winners), self.winnings)
+        for member in self.crew_list:
+            if self.crew_list[member]:
+                msg = self.payment_msg.format(member, num)
+                await self.bot.say(msg)
+                await asyncio.sleep(self.pay_sleep)
 
-    @commands.command(pass_context=True)
+    @commands.command()
     async def calculate(self, ctx, total_players: int, total_winners: int, winnings_per: int):
         """Calculates payouts"""
         winners_pay, losers_win = self.calculator(total_players, total_winners, winnings_per)
         await self.bot.say((f'```Each winner should pay {winners_pay} to the splitter.\n'
                             f'The splitter should pay {losers_win} to each loser.```'))
 
-    # @commands.command(pass_context=True)
-    # async def manualpay(self, ctx, amount: int, *members: discord.Member):
-    #     """Pays an amount to all members in the given list (amount, member_list)"""
-    #     await self.bot.delete_message(ctx.message)
-    #     for member in members:
-    #         msg = self.payment_msg.format(member, amount)
-    #         await self.bot.say(msg)
-    #         await asyncio.sleep(self.pay_sleep)
+    @commands.command()
+    async def manualpay(self, ctx, amount: int, *members: discord.Member):
+        """Pays an amount to all members in the given list (amount, member_list)"""
+        await ctx.message.delete()
+        for member in members:
+            msg = self.payment_msg.format(member, amount)
+            await ctx.send(msg)
+            await asyncio.sleep(self.pay_sleep)
 
-    # @commands.command(pass_context=True)
+    # @commands.command()
     # async def hvar(self, ctx):
     #     """Shows the winners list, and the values for payouts"""
     #     await self.bot.delete_message(ctx.message)
@@ -199,7 +200,7 @@ class HComms:
     #     a, b = self.calculator(self.crew, len(self.winners), self.winnings)
     #     await self.bot.say('```Each winner pay me {}, and I shall pay each loser {}```'.format(a, b))
 
-    # @commands.command(pass_context=True)
+    # @commands.command()
     # async def muteall(self, ctx):
     #     """Denies the @everyone role from sending messages"""
     #     everyone_perms = ctx.message.channel.overwrites_for(ctx.message.server.default_role)
@@ -207,7 +208,7 @@ class HComms:
     #     await self.bot.edit_channel_permissions(ctx.message.channel, ctx.message.server.default_role, everyone_perms)
     #     await self.bot.add_reaction(ctx.message, '\u2705')
 
-    # @commands.command(pass_context=True)
+    # @commands.command()
     # async def unmuteall(self, ctx):
     #     """Allows the @everyone role to send messages"""
     #     everyone_perms = ctx.message.channel.overwrites_for(ctx.message.server.default_role)
