@@ -11,7 +11,6 @@ class Brawl:
 
         self.no_join = discord.PermissionOverwrite(connect=False, speak=False)
         self.join = discord.PermissionOverwrite(connect=True, speak=True)
-        self.perm = lambda r, p: discord.ChannelPermissions(target=r, overwrite=p)
 
         try:
             with open(self.file_path, 'r') as f:
@@ -26,7 +25,11 @@ class Brawl:
 
     @commands.group(name='brawl', invoke_without_command=True)
     async def brawl(self, ctx, *users: discord.Member):
-        """Creates a brawl voice channel for the specified users and you and allows you to manage it"""
+        """
+        Creates and manages brawl voice channels
+        Mention your friends after this group to create a voice channel for you and them.
+        Incorrect usage shows this help command.
+        """
         if users == ():
             raise commands.CommandError
         if ctx.author.id not in self.config['channels']:
@@ -35,20 +38,28 @@ class Brawl:
                 ctx.author: self.join,
             }
             overwrites.update({u: self.join for u in users})
-            ch = await ctx.guild.create_voice_channel(f'\N{MICROPHONE} {ctx.author.name}', overwrites=overwrites, reason='Brawl voice channel')
+            ch = await ctx.guild.create_voice_channel(
+                f'\N{MICROPHONE} {ctx.author.name}',
+                overwrites=overwrites,
+                reason='Brawl voice channel')
+
             self.config['channels'][ctx.author.id] = ch.id
             self.write_config()
             link = await ch.create_invite(reason='Brawl vc invite')
-            await ctx.send(f'{ctx.author.mention}, your voice channel has been created! Manage it with `{ctx.prefix}brawl` and use the following link to join it:\n\n{link}')
+            await ctx.send((
+                f'{ctx.author.mention}, your voice channel has been created!\n'
+                f'Manage it with `{ctx.prefix}brawl` and use the following link to join it:\n\n{link}'))
 
         else:
             ch = ctx.guild.get_channel(self.config['channels'][ctx.author.id])
             link = ch.create_invite(reason='Brawl vc invite', unique=False)
-            await ctx.send(f'Sorry, but you can only have one voice channel at a time, {ctx.author.mention}. Here\'s a link to your current channel:\n{link}')
+            await ctx.send((
+                f'Sorry, but you can only have one voice channel at a time, '
+                f'{ctx.author.mention}. Here\'s a link to your current channel:\n{link}'))
 
     @brawl.error
     async def brawl_error(self, ctx, error):
-        await ctx.send('Invalid member passed!')
+        """Sends help for brawl command on error"""
         for page in await self.bot.formatter.format_help_for(ctx, ctx.command):
             await ctx.send(page)
 
@@ -84,7 +95,7 @@ class Brawl:
 
     @brawl.command()
     @commands.has_permissions(manage_channels=True)
-    async def fdelete(self, ctx, user: discord.Member = None):
+    async def fdelete(self, ctx, user: discord.Member=None):
         """Forcefully deletes someone's channel"""
         id = self.config['channels'].get(user.id)
         if id is None:

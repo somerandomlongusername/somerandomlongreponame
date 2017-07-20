@@ -13,7 +13,8 @@ prefix = config['PREFIX']
 token = config['TOKEN']
 startup_extensions = config['EXTENSIONS']
 description = '''A simple bot'''
-bot = commands.Bot(command_prefix=prefix, description=description, owner_id=config['OWNER'])
+bot = commands.Bot(command_prefix=prefix, description=description,
+                   owner_id=config['OWNER'])
 bot.my_data_files = 'data/clever/'
 
 

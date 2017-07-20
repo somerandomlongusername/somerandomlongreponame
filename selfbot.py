@@ -14,7 +14,8 @@ prefix = config['PREFIX']
 token = config['TOKEN']
 startup_extensions = config['EXTENSIONS']
 description = '''A simple selfbot'''
-bot = commands.Bot(command_prefix=prefix, description=description, self_bot=True, owner=config['OWNER'])
+bot = commands.Bot(command_prefix=prefix, description=description,
+                   self_bot=True, owner=config['OWNER'])
 bot.my_data_files = 'data/self/'
 
 

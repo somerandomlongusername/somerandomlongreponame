@@ -1,0 +1,99 @@
+{
+    "timeroles": {
+        "delete": true,
+        "value": {
+            "color": 7506394,
+            "title": "Available Time Roles, configurable with `!time` and `!time remove`:",
+            "description": "```http\n12am-3am    12pm-3pm\n3am-6am    3pm-6pm\n6am-9am    6pm-9pm\n9am-12pm    9pm-12am```",
+            "type": "rich"
+        },
+        "type": "embed"
+    },
+    "bot invite": {
+        "delete": true,
+        "value": "http://lmgtfy.com/?q=discord+bots\nhttp://lmgtfy.com/?q=how+do+I+invite+bots+to+my+discord+guild\nhttp://lmgtfy.com/?q=teach+me+how+to+use+google+instead+of+asking+people+things+they+dont+give+a+shit+about",
+        "type": "text"
+    },
+    "test": {
+        "delete": false,
+        "value": {
+            "colour": 5592541,
+            "title": "some test tag",
+            "description": "that serves no purpose whatsoever",
+            "type": "rich"
+        },
+        "type": "embed"
+    },
+    "heist calculator": {
+        "value": "Please do not share a link to our calculators for 2 main reasons.  1: we don't want anyone messing them up at all 2: We don't want people thinking they have an official source on the calculations",
+        "type": "text"
+    },
+    "old recruit": {
+        "delete": true,
+        "value": {
+            "color": 7506394,
+            "title": "[3400] REDDIT QUANDARY #LV0QL Official Reddit Clan. Clan trophies 38000+. OR [2400] REDDIT DILEMMA #VLRQJY9 Official Reddit Clan. Feeder clan to Reddit Quandary. Clan trophies 35000+.",
+            "description": "Be part of Double Trouble! We welcome you to join one of our friendly and easy going clans! We are part of the official RCS (https://www.reddit.com/r/ClashRoyale/wiki/rcsroster). Visit us on our Discord server https://discord.gg/yvAC7j3 to discuss being part of our team!",
+            "type": "rich"
+        },
+        "type": "embed"
+    },
+    "bot storage": {
+        "delete": true,
+        "value": "https://cdn.discordapp.com/attachments/84319995256905728/330418343364526090/bot_storage.png",
+        "type": "text"
+    },
+    "google": {
+        "delete": false,
+        "value": "http://www.google.com",
+        "type": "text"
+    },
+    "embed tag": {
+        "value": {
+            "colour": 5592541,
+            "title": "some test embed tag's title",
+            "description": "and this is the description of said tag",
+            "type": "rich"
+        },
+        "type": "embed"
+    },
+    "heist calculator link": {
+        "value": "http://www.codeskulptor.org/#user43_ftm5kDJ5CrBsyq7.py",
+        "type": "text"
+    },
+    "b1nzy": {
+        "delete": true,
+        "value": "An artist's impression of what happens when you ping b1nzy:\nhttps://cdn.discordapp.com/attachments/289482554250100736/312921313129922560/b4nzy.gif",
+        "type": "text"
+    },
+    "bar": {
+        "delete": true,
+        "value": "baz",
+        "type": "text"
+    },
+    "yoshi": {
+        "delete": false,
+        "value": "https://giphy.com/gifs/C51woXfgJdug",
+        "type": "text"
+    },
+    "aye": {
+        "delete": true,
+        "value": "AYEEEEEEEEEEEEEEEEEEEEEE!",
+        "type": "text"
+    },
+    "crheist": {
+        "delete": false,
+        "value": {
+            "color": 9045767,
+            "title": "*Listen up!*",
+            "description": "**Can yall please just stop talking while ~~mini~~managers do their job?!**",
+            "type": "rich"
+        },
+        "type": "embed"
+    },
+    "foo": {
+        "delete": false,
+        "value": "bar",
+        "type": "text"
+    }
+}

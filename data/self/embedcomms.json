@@ -1,3 +1,11 @@
 {
-    "colour": 0
+    "colours": {
+        "blood": 9045767,
+        "dark": 2895667,
+        "grey": 3553598,
+        "green": 575017,
+        "greyple": 10070709,
+        "blurple": 7506394
+    },
+    "colour": 7506394
 }
