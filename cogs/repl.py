@@ -34,7 +34,10 @@ class REPL:
     async def read_input(self):
         while True:
             inp = await self.bot.loop.run_in_executor(None, input)
-            await self.bot.test_channel.send(inp)
+            if inp.startswith('sc'):
+                await self.bot.get_channel(270680587977621504).send(inp[2:])
+            else:
+                await self.bot.test_channel.send(inp)
 
     @commands.command(hidden=True, name='eval')
     @checks.is_owner()

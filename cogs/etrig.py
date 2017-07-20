@@ -58,9 +58,9 @@ class ETrig:
     @commands.group(invoke_without_command=True)
     async def etrig(self, ctx):
         """Etrig command group"""
-        if ctx.invoked_subcommand is None:
-            for page in self.bot.formatter.format_help_for(ctx, ctx.command):
-                await ctx.send(page)
+        # if ctx.invoked_subcommand is None:
+        for page in self.bot.formatter.format_help_for(ctx, ctx.command):
+            await ctx.send(page)
 
     @etrig.command(name='set')
     @checks.is_owner()

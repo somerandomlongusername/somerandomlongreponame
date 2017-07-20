@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 from .utils import checks
 import json
-from .utils import checks
 
 from collections import deque
 from hashlib import md5
@@ -120,7 +119,7 @@ class Clever:
 
     @commands.command()
     async def creset(self, ctx):
-        self.cleverbot.history = deque(maxlen=20)
+        self.clevers[ctx.channel.id].history = deque(maxlen=20)
         em = discord.Embed(description='This question/inquiry has been fully answered.\nPlease do not reply to it after this message.\n(A.k.a. the bot has been reset)', type='rich', colour=0x7289DA)
         em.set_footer(text='Abuse of this command may get cleverbot indefinitely shut down.')
         await ctx.send(embed=em)
